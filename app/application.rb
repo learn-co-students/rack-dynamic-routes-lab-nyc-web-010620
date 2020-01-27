@@ -11,10 +11,11 @@ class Application
 
       if req.path.match(/items/)
          requested_item_name = req.path.split("/items/").last
+         # this isolates just the name of the item we want 
          if @@items.find{|item| item.name == requested_item_name}
          # if the requested item name matches an item with the same name in the @@items array, 
          # set the resulting item from the @@items array (an instance object) equal to the variable "confirmed_item"
-         # then go in and get the price of that item 
+         # so you can then go in and get the price (an attribute of an item) of that item 
             confirmed_item = @@items.find{|item| item.name == requested_item_name}
             resp.write confirmed_item.price
          else 
